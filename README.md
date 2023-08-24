@@ -12,9 +12,9 @@ Next simple place custom component `<image-swapper>` in your html app/webstie/wh
 
 You need to setup some attributes
 
-`prefix: string` - full path with prefix of your images. (if your files is placed in assets 'asset/img-1.png', 'asset/img-2.png',.. then prefix is `asset/img-` ).
-`ext: string` - file extension, in this example is `png`
-`count: number` - count of images
-`preloadCount: number` - as a optimalization (preload), can be loaded some images before and after currently shown. Default is `5`
-`step: number` - if you have many small images, and you can show only some of them (eg. one from 5), default is `1`
-`current(): number` - current shown image index. this need to be changed if you can swap to another image
+`prefix: string` - full path with prefix of your images. (if your files is placed in assets 'asset/img-1.png', 'asset/img-2.png',.. then prefix is `asset/img-` ).`<br>
+`ext: string` - file extension, in this example is `png``<br>
+`count: number` - count of images`<br>
+`preloadCount: number` - as a optimalization (preload), can be loaded some images before and after currently shown. Default is `5``<br>
+`step: number` - if you have many small images, and you can show only some of them (eg. one from 5), default is `1``<br>
+`current(): number` - current shown image index. this need to be changed if you can swap to another image`<br>
