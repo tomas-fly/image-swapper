@@ -10,7 +10,7 @@ export class ImageSwapperComponent implements AfterViewInit {
   @Input() prefix: string = '';
   @Input() ext: string = '';
   @Input() count: number = 0;
-  @Input() preloadCount: number = 5;
+  @Input() preload: number = 5;
   @Input() step: number = 1;
 
   @Input()
@@ -37,8 +37,8 @@ export class ImageSwapperComponent implements AfterViewInit {
   }
 
   private generateCurrentImages(): void {
-    const start = Math.max(0, +this.current - this.preloadCount);
-    const count = Math.min(this.count, +this.current + +this.preloadCount + 1) - start;
+    const start = Math.max(0, +this.current - this.preload);
+    const count = Math.min(this.count, +this.current + +this.preload + 1) - start;
     console.log('count', count);
     this.currentImages = this.generateArray(start, count, this.step).map(index => this.generateImageName(index));
   }

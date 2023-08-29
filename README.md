@@ -18,7 +18,7 @@ You need to setup some attributes
 
 `count: number` - count of images
 
-`preloadCount: number` - as a optimalization (preload), can be loaded some images before and after currently shown. Default is `5`
+`preload: number` - as a optimalization (preload), can be loaded some images before and after currently shown. Default is `5`
 
 `step: number` - if you have many small images, and you can show only some of them (eg. one from 5), default is `1`
 
