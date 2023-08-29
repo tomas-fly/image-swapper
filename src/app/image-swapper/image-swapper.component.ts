@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
+import { BehaviorSubject, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'app-image-swapper',
@@ -14,31 +15,29 @@ export class ImageSwapperComponent implements AfterViewInit {
   @Input() step: number = 1;
 
   @Input()
-  get current(): number {
-    return this._current;
-  }
   set current(value: number) {
     this._current = value;
-    this.generateCurrentImages();
+    this.currentChange.next(value);
   }
 
   get currentImageSrc(): string {
-    return this.generateImageName(this.current);
+    return this.generateImageName(this._current);
   }
 
   currentImages: string[] = [];
 
   private _current: number = 0;
+  private currentChange = new BehaviorSubject(this._current);
 
   constructor() { }
 
   ngAfterViewInit(): void {
-    this.generateCurrentImages();
+    this.currentChange.pipe(throttleTime(100)).subscribe((p) => this.generateCurrentImages(p));
   }
 
-  private generateCurrentImages(): void {
-    const start = Math.max(0, +this.current - this.preload);
-    const count = Math.min(this.count, +this.current + +this.preload + 1) - start;
+  private generateCurrentImages(current: number): void {
+    const start = Math.max(0, +current - this.preload);
+    const count = Math.min(this.count, +current + +this.preload + 1) - start;
     console.log('count', count);
     this.currentImages = this.generateArray(start, count, this.step).map(index => this.generateImageName(index));
   }
