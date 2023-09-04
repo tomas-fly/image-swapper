@@ -38,7 +38,6 @@ export class ImageSwapperComponent implements AfterViewInit {
   private generateCurrentImages(current: number): void {
     const start = Math.max(0, +current - this.preload);
     const count = Math.min(this.count, +current + +this.preload + 1) - start;
-    console.log('count', count);
     this.currentImages = this.generateArray(start, count, this.step).map(index => this.generateImageName(index));
   }
 
